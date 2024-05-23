@@ -1,4 +1,4 @@
-import { Client, Users, ID, Query } from "node-appwrite";
+import { Client, Users, ID, Query, Models } from "node-appwrite";
 import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_ID } from "$env/static/public";
 import { env } from "$env/dynamic/private";
 
@@ -13,7 +13,14 @@ const client = new Client()
 
 const users = new Users(client);
 
-async function checkIfUserExists(email) {
+/**
+ * 
+ * Returns user if user exists in Appwrite, if not creates a new user
+ * 
+ * @param {string} email
+ * @returns {Promise<Models.User<Models.Preferences>>}
+ */
+async function getUser(email) {
     try {
         let usersList = await users.list([ Query.equal('email', email) ]);
         if (usersList.total != 0) {
@@ -27,12 +34,22 @@ async function checkIfUserExists(email) {
     
 }
 
+/**
+ * Logic for authentication
+ * 
+ * @param {string} email 
+ * @param {string} password 
+ * @returns {Promise<Models.User<Models.Preferences>>}
+ */
 async function authLogic(email, password) {
-    // You can have any auth logic here
-    if (password === '123456') {
-        return await checkIfUserExists(email);
+    try {
+        // You can have any auth logic here. For the example, we're only matching the password with '123456'
+        if (password === '123456') {
+            return await getUser(email);
+        }
+    } catch (err) {
+        console.error(err);
     }
-    return false;
 }
 
 export async function POST({ request }) {
@@ -41,11 +58,14 @@ export async function POST({ request }) {
         const email = requestBody.email;
         const password = requestBody.password;
 
+        // Call the auth logic
         let user = await authLogic(email, password);
 
+        // If user exists, create a token
         if(user) {
             let token = await users.createToken(user.$id);
 
+            // Ideally, you should not send the token object in response. Send the token secret to the user through an alternative secure channel
             return new Response(JSON.stringify({ user, token }), { status: 200, headers: { 'Content-Type': 'application/json' } });
         } else {
             return new Response(JSON.stringify({ message: 'Invalid credentials' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
