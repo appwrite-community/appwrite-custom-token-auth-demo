@@ -1,4 +1,4 @@
-import { Client, Users, ID, Query, Models } from "node-appwrite";
+import { Client, Users, ID, Query } from "node-appwrite";
 import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_ID } from "$env/static/public";
 import { env } from "$env/dynamic/private";
 
@@ -14,11 +14,9 @@ const client = new Client()
 const users = new Users(client);
 
 /**
- * 
  * Returns user if user exists in Appwrite, if not creates a new user
  * 
  * @param {string} email
- * @returns {Promise<Models.User<Models.Preferences>>}
  */
 async function getUser(email) {
     try {
@@ -39,7 +37,6 @@ async function getUser(email) {
  * 
  * @param {string} email 
  * @param {string} password 
- * @returns {Promise<Models.User<Models.Preferences>>}
  */
 async function authLogic(email, password) {
     try {
