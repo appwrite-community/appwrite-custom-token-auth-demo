@@ -41,6 +41,8 @@ async function authLogic(email, password) {
 		// You can have any auth logic here. For the example, we're only matching the password with '123456'
 		if (password === '123456') {
 			return await getUser(email);
+		} else {
+			return null;
 		}
 	} catch (err) {
 		console.error(err);
