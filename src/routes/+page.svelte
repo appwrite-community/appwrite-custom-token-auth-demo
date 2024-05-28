@@ -52,10 +52,14 @@
     })
 </script>
 
-<h1 class="heading-level-1">Appwrite Custom Token Demo</h1>
+<div class="heading">
+    <img class="u-margin-block-end-16" src="/logotype.svg" alt="Appwrite logotype">
+    <h1 class="heading-level-2">Custom Token Auth Demo</h1>
+</div>
 
 {#if currentState == state[0]}
     <div class="notLoggedIn container">
+        <h2 class="heading-level-3">Login</h2>
         <form on:submit={createToken}>
             <div class="inputCard">
                 <label for="email">Email</label>
@@ -82,14 +86,17 @@
 {/if}
 
 <style>
+    .heading {
+        margin: 2.5rem;
+    }
+
     h1 {
-        color: hsl(var(--color-primary-100));
-        margin: 3rem;
+        color: hsl(var(--color-neutral-5));
     }
 
     h2 {
         color: hsl(var(--color-neutral-5));
-        margin: 2rem;
+        margin-bottom: 2rem;
     }
 
     .container {
@@ -98,6 +105,13 @@
         align-items: center;
         flex-direction: column;
         margin: 2rem; 
+        padding: 3rem;
+        gap: 1rem;
+        background-color: hsl(var(--color-neutral-85));
+        border: 5px solid hsl(var(--color-neutral-80));
+        border-radius: 20px;
+        color: hsl(var(--color-neutral-0));
+        width: 35%;
     }
 
     form {
@@ -111,7 +125,12 @@
         gap: 0.5rem;
     }
 
-    form input {
+    label {
+        font-size: 1rem;
+    }
+
+    input {
+        font-size: 1rem;
         padding: 0.5rem;
     }
 
@@ -125,5 +144,12 @@
         border-radius: 0.5rem;
         white-space: pre-line;
         max-width: 70vw;
+        text-align: left;
     }
+
+    @media (max-width:767.99px) {
+        .container {
+            width: 90%;
+        }
+  }
 </style>

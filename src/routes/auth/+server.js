@@ -17,6 +17,7 @@ const users = new Users(client);
  * Returns user if user exists in Appwrite, if not creates a new user
  * 
  * @param {string} email
+ * @returns {Promise<import("node-appwrite").Models.User>} user
  */
 async function getUser(email) {
     try {
@@ -37,6 +38,7 @@ async function getUser(email) {
  * 
  * @param {string} email 
  * @param {string} password 
+ * @returns {Promise<import("node-appwrite").Models.User>} user
  */
 async function authLogic(email, password) {
     try {
