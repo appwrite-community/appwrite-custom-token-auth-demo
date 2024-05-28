@@ -2,6 +2,8 @@
 
 Demo to showcase how custom token auth works in Appwrite
 
+https://github.com/appwrite-community/appwrite-custom-token-auth-demo/assets/31401437/8adc1616-d058-40b2-b216-8f204f4ad479
+
 ## Environment variables
 
 This app needs the following environment variables
