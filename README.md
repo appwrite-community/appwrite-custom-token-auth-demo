@@ -8,8 +8,8 @@ https://github.com/appwrite-community/appwrite-custom-token-auth-demo/assets/314
 
 This app needs the following environment variables
 
-- `PUBLIC_APPWRITE_ENDPOINT`: Endpoint of your Appwrite project  
-- `PUBLIC_APPWRITE_PROJECT_ID`: Project ID of your Appwrite project  
+- `PUBLIC_APPWRITE_ENDPOINT`: Endpoint of your Appwrite project
+- `PUBLIC_APPWRITE_PROJECT_ID`: Project ID of your Appwrite project
 - `APPWRITE_API_KEY`: API key from your Appwrite project with the following scopes enabled: `users.read` and `users.write`
 
 ## Testing the app
