@@ -1,38 +1,19 @@
-# create-svelte
+# Appwrite Custom Token Auth Demo
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Demo to showcase how custom token auth works in Appwrite
 
-## Creating a project
+## Environment variables
 
-If you're seeing this, you've probably already done this step. Congrats!
+This app needs the following environment variables
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- `PUBLIC_APPWRITE_ENDPOINT`: Endpoint of your Appwrite project  
+- `PUBLIC_APPWRITE_PROJECT_ID`: Project ID of your Appwrite project  
+- `APPWRITE_API_KEY`: API key from your Appwrite project with the following scopes enabled: `users.read` and `users.write`
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Testing the app
 
-## Developing
+Once you've clone the project, installed dependencies with `npm install` and created a `.env` file with the appropriate variables, run the following command in your terminal
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+```sh
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
